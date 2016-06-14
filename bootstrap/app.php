@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-// Dotenv::load(__DIR__.'/../');
+ Dotenv::load(__DIR__.'/../');
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,9 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+ $app->withFacades();
 
-// $app->withEloquent();
+ $app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +80,10 @@ $app->register(\LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class);
 
  ]);
 
+
+$app->configure('oauth2');
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -107,7 +111,7 @@ $app->register(\LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class);
 
 
 class_alias(\LucaDegasperi\OAuth2Server\Facades\Authorizer::class, 'Authorizer');
-
+class_alias(Illuminate\Support\Facades\Config::class, 'Config');
 
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {

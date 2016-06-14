@@ -17,3 +17,7 @@ $app->get('/', function () use ($app) {
 
 
 $app->get('/tema', ['uses'=>'IndexController@view']);
+
+$app->post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
